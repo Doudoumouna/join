@@ -10,7 +10,26 @@
     <script src="script.js"></script>
     <script src="mini_backend.js"></script>
 </head>
-<body>
+<body onload="init()">
+    <div class="addNewContact" id="addNewContact">
+        <div class="newContactBox">
+            <div class="newContactHead">
+                <img class="closeTag" src="assets/icon/closeWhite.png">
+                <img src="assets/icon/logoSmallWhite.png">
+                <h3>Add contact</h3>
+                <p>Tasks are better with a team!</p>
+            </div>
+            <div class="addNewInputBox">
+                <div class="avatarBox" id="avatarBox">
+                    <img src="assets/icon/avatar.png">
+                </div>
+                <input type="text">
+                <input type="email">
+                <input type="tel">
+            </div>
+        </div>
+        
+    </div>
     <header>
         <img class="head-logo" src="assets/icon/logoSmallWhite.png">
         <div class="head-right">
@@ -24,6 +43,8 @@
         <a class="navLink" href="#"><img src="assets/icon/addTask.png"><p>Add Task</p></a>
         <a class="navLink activ" href="#"><img src="assets/icon/contacts.png"><p>Contacts</p></a>
     </nav>
+    
+    <button class="btn" onclick="newContact()">New contact <img src="assets/icon/newContact.png"></button>
     <div class="contactContent" id="contactContent">
         <div class="contactBox" id="contentBox">
             <div class="avatar">PB</div>
