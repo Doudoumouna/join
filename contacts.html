@@ -13,25 +13,26 @@
     <script src="mini_backend.js"></script>
 </head>
 <body onload="init()">
-   <!-- <div class="addNewContact" id="addNewContact">
-        <div class="newContactBox">
+   <div onclick="toggleAddContact()" class="addNewContact dNone" id="addNewContact">
+        <div class="newContactBox" onclick="event.stopPropagation()" >
             <div class="newContactHead">
-                <img class="closeTag" src="assets/icon/closeWhite.png">
+                <img onclick="toggleAddContact()" class="closeTag" src="assets/icon/closeWhite.png">
                 <img src="assets/icon/logoSmallWhite.png">
                 <h3>Add contact</h3>
                 <p>Tasks are better with a team!</p>
             </div>
-            <div class="addNewInputBox">
+            <form onsubmit="addContact();return false;" class="addNewInputBox">
                 <div class="avatarBox" id="avatarBox">
                     <img src="assets/icon/avatar.png">
                 </div>
-                <input type="text">
-                <input type="email">
-                <input type="tel">
-            </div>
+                <input id="contactName" type="text" placeholder="Name" required  style="background-image:  url(assets/icon/name.png); background-repeat: no-repeat; background-position: center right 14px;">
+                <input id="contactEmail" type="email" placeholder="E-Mail" required style="background-image:  url(assets/icon/email.png); background-repeat: no-repeat; background-position: center right 14px;">
+                <input id="contactTel" type="tel" placeholder="Phone" required style="background-image:  url(assets/icon/phone.png); background-repeat: no-repeat; background-position: center right 14px;">
+                <button class="btn">Create contact</button>
+            </form>
         </div>
         
-    </div>-->
+    </div>
     <header>
         <img class="head-logo" src="assets/icon/logoSmallWhite.png">
         <div class="head-right">
@@ -46,18 +47,9 @@
         <a class="navLink activ" href="#"><img src="assets/icon/contacts.png"><p>Contacts</p></a>
     </nav>
     
-    <button class="btn" onclick="newContact()">New contact <img src="assets/icon/newContact.png"></button>
+    <button class="btn btn-posRB" onclick="toggleAddContact()">New contact <img src="assets/icon/newContact.png"></button>
     <div class="contactContent" id="contactContent">
-        <div class="contactBox" id="contentBox">
-
-            <div class="avatar">PB</div>
-
-            <div class="contact">
-                <h4>Patrick Berndt</h4>
-                <a href="mailto:p.berndt@live.de">p.berndt@live.de</a>
-            </div>
-            
-        </div>
+        
     </div>
 </body>
 </html>
