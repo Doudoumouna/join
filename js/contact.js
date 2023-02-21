@@ -1,4 +1,5 @@
 let letters = [];
+let currentContact
 
 function toggleAddContact(){
     document.getElementById('addNewContact').classList.toggle('dNone')
@@ -29,6 +30,25 @@ function addContact(){
     wipeInput();
     toggleAddContact();
     getLetters()
+}
+
+function renderContact(i){
+    wipeActivContact()
+    const user = users[i];
+    let email = user['email'];
+    let firstName = user['firstName'];
+    let lastName = user['lastName'];
+    let initials =  user['initial'];
+    let color = user['color'];
+    let tel = user['phone']
+    document.getElementById(`contactContentRight`).innerHTML = contactTemplateLong(tel,email,firstName,lastName,initials,color) ;
+    document.getElementById(`contactBox${i}`).classList.add('activ')
+}
+
+function wipeActivContact(){
+    for (let i = 0; i < users.length; i++) {
+        document.getElementById(`contactBox${i}`).classList.remove('activ');
+    }
 }
 
 function wipeInput(){
@@ -72,13 +92,3 @@ function updateContact(){
     }
 }
 
-function contactTemplateShort(i,email,firstName,lastName,initials,color){
-    return /*html*/`
-    <div class="contactBox" id="contentBox${i}">
-    <div class="avatar" style="background-color:${color};">${initials}</div>
-    <div class="contact">
-        <h4>${firstName + ' ' + lastName}</h4>
-        <a href="mailto:${email}">${email}</a>
-    </div>
-    </div>`;
-}
