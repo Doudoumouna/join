@@ -7,7 +7,7 @@ function toggleAddContact(){
 function getLetters(){
     for (let i = 0; i < users.length; i++) {
         const user = users[i];
-        let letter = user['lastName'].charAt(0);
+        let letter = user['firstName'].charAt(0);
         if (!letters.includes(letter)) {
             letters.push(letter);
         }
@@ -67,7 +67,7 @@ function updateContact(){
         let lastName = user['lastName'];
         let initials =  user['initial'];
         let color = user['color'];
-        let letter = user['lastName'].charAt(0);
+        let letter = user['firstName'].charAt(0);
         document.getElementById(`indexBox-${letter}`).innerHTML += contactTemplateShort(i,email,firstName,lastName,initials,color) ;
     }
 }

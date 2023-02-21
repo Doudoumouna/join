@@ -1,14 +1,14 @@
 
 ::-webkit-scrollbar {
-    width: 5px;
+    width: 7px;
   }
   ::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 2px grey;
-    border-radius: 10px;
+   
+    border-radius: 3px;
   }
   ::-webkit-scrollbar-thumb {
-    background: #4589ff;
-    border-radius: 10px;
+    background: #A8A8A8;
+    border-radius: 3px;
   }
 
 .contactContent{
