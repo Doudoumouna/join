@@ -1,5 +1,19 @@
+let letters = [];
+
 function toggleAddContact(){
     document.getElementById('addNewContact').classList.toggle('dNone')
+}
+
+function getLetters(){
+    for (let i = 0; i < users.length; i++) {
+        const user = users[i];
+        let letter = user['lastName'].charAt(0);
+        if (!letters.includes(letter)) {
+            letters.push(letter);
+        }
+    }
+    letters.sort();
+    renderLetters();
 }
 
 function addContact(){
@@ -14,6 +28,7 @@ function addContact(){
     addUser(user);
     wipeInput();
     toggleAddContact();
+    getLetters()
 }
 
 function wipeInput(){
@@ -25,19 +40,35 @@ function wipeInput(){
 async function addUser(user) {
     users.push(user);
     await backend.setItem('users', JSON.stringify(users));
-    updateContact()
+    renderLetters();
+}
+
+function renderLetters() {
+    let letterbox = document.getElementById('contactContent');
+    letterbox.innerHTML = '';
+
+    for (let i = 0; i < letters.length; i++) {
+        const letter = letters[i];
+        letterbox.innerHTML += `
+        <div class="indexBox" id="indexBox-${letter}">
+            <div class="letterBox">
+                <h3>${letter}</h3>
+            </div>
+        </div>`;
+    }
+    updateContact();
 }
 
 function updateContact(){
-    document.getElementById('contactContent').innerHTML = '';
     for (let i = 0; i < users.length; i++) {
         const user = users[i];
-        let email = user['email']
-        let firstName = user['firstName']
-        let lastName = user['lastName']
-        let initials =  user['initial']
-        let color = user['color']
-        document.getElementById('contactContent').innerHTML += contactTemplateShort(i,email,firstName,lastName,initials,color) ;
+        let email = user['email'];
+        let firstName = user['firstName'];
+        let lastName = user['lastName'];
+        let initials =  user['initial'];
+        let color = user['color'];
+        let letter = user['lastName'].charAt(0);
+        document.getElementById(`indexBox-${letter}`).innerHTML += contactTemplateShort(i,email,firstName,lastName,initials,color) ;
     }
 }
 
