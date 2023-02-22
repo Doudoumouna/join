@@ -1,11 +1,11 @@
 let letters = [];
 
 function toggleAddContact(){
-    document.getElementById('addNewContact').classList.toggle('dNone')
+    document.getElementById('addNewContact').classList.toggle('dNone');
 }
 
 function toggleEditContact(i){
-    document.getElementById('editContact').classList.toggle('dNone')
+    document.getElementById('editContact').classList.toggle('dNone');
     fillEditBox(i);
 }
 
@@ -29,7 +29,7 @@ function addContact(){
     let lastName = name.split(' ').slice(-1).join(' ');
     let initials = name.replace(/[^A-Z]/g, '');
     let color = '#'+(Math.floor(Math.random()*16777215).toString(16));
-    let user = {'firstName':firstName,'lastName':lastName,'email':email,'password':'','color':color,'phone':tel,'initial':initials}
+    let user = {'firstName':firstName,'lastName':lastName,'email':email,'password':'','color':color,'phone':tel,'initial':initials};
     addUser(user);
     wipeInput();
     toggleAddContact();
@@ -59,7 +59,11 @@ function wipeInput(){
     document.getElementById('contactName').value='';
     document.getElementById('contactEmail').value='';
     document.getElementById('contactTel').value='';
+    document.getElementById('editName').value='';
+    document.getElementById('editEmail').value='';
+    document.getElementById('editTel').value='';
 }
+
 
 async function addUser(user) {
     users.push(user);
@@ -102,20 +106,22 @@ function fillEditBox(i){
         let firstName = user['firstName'];
         let lastName = user['lastName'];
         let tel = user['phone'];
-        document.getElementById('editContentBox').innerHTML += editBoxTemplate(i,tel,firstName,lastName,email)
+        document.getElementById('editContact').innerHTML = editBoxTemplate(i,tel,firstName,lastName,email);
 }
 
-function saveEdit(i){
+async function saveEdit(i){
+    let user = users[i];
     let name = document.getElementById('editName').value;
     let email = document.getElementById('editEmail').value;
     let tel = document.getElementById('editTel').value;
     let firstName = name.split(' ').slice(0, -1).join(' ');
     let lastName = name.split(' ').slice(-1).join(' ');
-    
-    users[i].push('firstName',firstName);
-    users[i].push('lastName',lastName);
-    users[i].push('email',email);
-    users[i].push('phone',tel);
-    toggleEditContact();
+    let initials = name.replace(/[^A-Z]/g, '');
+    user = {'firstName':firstName,'lastName':lastName,'email':email,'password':user['password'],'color':user['color'],'phone':tel,'initial':initials};
+    users[i]=user;
+    await backend.setItem('users', JSON.stringify(users));
+    document.getElementById('editContact').classList.toggle('dNone');
+    renderContact(i);
+    wipeInput();
 }
 

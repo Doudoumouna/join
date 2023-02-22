@@ -26,21 +26,29 @@ function contactTemplateLong(i,tel,email,firstName,lastName,initials,color){
             <h4>E-Mail</h4>
             <a href="mailto:${email}">${email}</a>
             <h4>Phone</h4>
-            <span>+49 ${tel}</span>
+            <span>(+49) ${tel}</span>
         </div>
     `;
 }
 
 function editBoxTemplate(i,tel,firstName,lastName,email){
     return /*html*/`
-    <form onsubmit="saveEdit(${i});return false;" class="addNewInputBox">
-                <div class="avatarBox" id="avatarBox">
-                    <img src="assets/icon/avatar.png">
-                </div>
-                <input id="editName" value="${firstName + ' ' + lastName}" type="text" placeholder="Name" required  style="background-image:  url(assets/icon/name.png); background-repeat: no-repeat; background-position: center right 14px;">
-                <input id="editEmail" value="${email}" type="email" placeholder="E-Mail" required style="background-image:  url(assets/icon/email.png); background-repeat: no-repeat; background-position: center right 14px;">
-                <input id="editTel" value="${tel}" type="tel" placeholder="Phone" required style="background-image:  url(assets/icon/phone.png); background-repeat: no-repeat; background-position: center right 14px;">
-                <button class="btn">Save</button>
-            </form>
+    <div class="newContactBox" id="editContentBox" onclick="event.stopPropagation()" >
+        <div class="newContactHead">
+            <img onclick="toggleEditContact()" class="closeTag" src="assets/icon/closeWhite.png">
+            <img src="assets/icon/logoSmallWhite.png">
+            <h3>Edit contact</h3>
+        </div>
+        <form onsubmit="saveEdit(${i});return false;" class="addNewInputBox">
+            <div class="avatarBox" id="avatarBox">
+                <img src="assets/icon/avatar.png">
+            </div>
+            <input id="editName" value="${firstName + ' ' + lastName}" type="text" placeholder="Name" required  style="background-image:  url(assets/icon/name.png); background-repeat: no-repeat; background-position: center right 14px;">
+            <input id="editEmail" value="${email}" type="email" placeholder="E-Mail" required style="background-image:  url(assets/icon/email.png); background-repeat: no-repeat; background-position: center right 14px;">
+            <input id="editTel" value="${tel}" type="tel" placeholder="Phone" required style="background-image:  url(assets/icon/phone.png); background-repeat: no-repeat; background-position: center right 14px;">
+            <button class="btn">Save</button>
+        </form>
+    </div>
+    
     `;
 }
