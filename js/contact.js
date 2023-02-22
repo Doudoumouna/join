@@ -106,7 +106,9 @@ function fillEditBox(i){
         let firstName = user['firstName'];
         let lastName = user['lastName'];
         let tel = user['phone'];
-        document.getElementById('editContact').innerHTML = editBoxTemplate(i,tel,firstName,lastName,email);
+        let initial = user['initial'];
+        let color = user['color'];
+        document.getElementById('editContact').innerHTML = editBoxTemplate(i,tel,firstName,lastName,email,initial,color);
 }
 
 async function saveEdit(i){

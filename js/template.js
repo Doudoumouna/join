@@ -31,7 +31,7 @@ function contactTemplateLong(i,tel,email,firstName,lastName,initials,color){
     `;
 }
 
-function editBoxTemplate(i,tel,firstName,lastName,email){
+function editBoxTemplate(i,tel,firstName,lastName,email,initial,color){
     return /*html*/`
     <div class="newContactBox" id="editContentBox" onclick="event.stopPropagation()" >
         <div class="newContactHead">
@@ -40,8 +40,8 @@ function editBoxTemplate(i,tel,firstName,lastName,email){
             <h3>Edit contact</h3>
         </div>
         <form onsubmit="saveEdit(${i});return false;" class="addNewInputBox">
-            <div class="avatarBox" id="avatarBox">
-                <img src="assets/icon/avatar.png">
+            <div class="avatarBoxFull" style="background-color: ${color}; margin-top: 30px; margin-right:0;" id="avatarBox">
+                ${initial}
             </div>
             <input id="editName" value="${firstName + ' ' + lastName}" type="text" placeholder="Name" required  style="background-image:  url(assets/icon/name.png); background-repeat: no-repeat; background-position: center right 14px;">
             <input id="editEmail" value="${email}" type="email" placeholder="E-Mail" required style="background-image:  url(assets/icon/email.png); background-repeat: no-repeat; background-position: center right 14px;">
