@@ -4,7 +4,7 @@ function contactTemplateShort(i,email,firstName,lastName,initials,color){
     <div class="avatar" style="background-color:${color};">${initials}</div>
     <div class="contact">
         <h4>${firstName + ' ' + lastName}</h4>
-        <a href="mailto:${email}">${email}</a>
+        <a href="#">${email}</a>
     </div>
     </div>`;
 }
