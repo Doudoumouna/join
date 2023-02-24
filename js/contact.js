@@ -36,6 +36,19 @@ function addContact(){
     getLetters()
 }
 
+function addUser(){
+    let name = document.getElementById('signUpName').value;
+    let email = document.getElementById('signUpEmail').value;
+    let password = document.getElementById('signUpPW').value;
+    let firstName = name.split(' ').slice(0, -1).join(' ');
+    let lastName = name.split(' ').slice(-1).join(' ');
+    let initials = name.replace(/[^A-Z]/g, '');
+    let color = '#'+(Math.floor(Math.random()*16777215).toString(16));
+    let user = {'firstName':firstName,'lastName':lastName,'email':email,'password':password,'color':color,'phone':'','initial':initials};
+    addUser(user);
+    wipeInput();
+}
+
 function renderContact(i){
     wipeActivContact()
     const user = users[i];
@@ -62,6 +75,9 @@ function wipeInput(){
     document.getElementById('editName').value='';
     document.getElementById('editEmail').value='';
     document.getElementById('editTel').value='';
+    document.getElementById('signUpName').value='';
+    document.getElementById('signUpEmail').value='';
+    document.getElementById('signUpPW').value='';
 }
 
 
