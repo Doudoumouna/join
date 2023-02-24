@@ -79,9 +79,11 @@
     flex-direction: column;
     align-items: center;
     background-color: white;
+    position: relative;
 }
 .loginBox h2{
-    font-size: 50px;
+    font-size: 40px;
+    margin-top: 50px;
     margin-bottom: 20px;
 }
 .loginBox input{
@@ -103,4 +105,10 @@
 }
 .remember a{
     color: #4589ff;
+}
+.backButton{
+    position: absolute;
+    left: 37px;
+    top: 41px;
+    cursor: pointer;
 }
