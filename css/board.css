@@ -1,9 +1,6 @@
 * {
   box-sizing: border-box;
 }
-body {
-  font: var(--font-size-regular) 'Open Sans', sans-serif;
-}
 .haupt-content {
   width: 100%;
   display: flex;
