@@ -18,10 +18,10 @@ function getLetters(){
         }
     }
     letters.sort();
-    renderLetters();
 }
 
 function addContact(){
+    let x='addNew';
     let name = document.getElementById('contactName').value;
     let email = document.getElementById('contactEmail').value;
     let tel = document.getElementById('contactTel').value;
@@ -30,13 +30,13 @@ function addContact(){
     let initials = name.replace(/[^A-Z]/g, '');
     let color = '#'+(Math.floor(Math.random()*16777215).toString(16));
     let user = {'firstName':firstName,'lastName':lastName,'email':email,'password':'','color':color,'phone':tel,'initial':initials};
-    addUser(user);
-    wipeInput();
+    addUser(user,x);
     toggleAddContact();
-    getLetters()
+    getLetters();
 }
 
-function addUser(){
+function addSignUpUser(){
+    let x='signup';
     let name = document.getElementById('signUpName').value;
     let email = document.getElementById('signUpEmail').value;
     let password = document.getElementById('signUpPW').value;
@@ -45,8 +45,7 @@ function addUser(){
     let initials = name.replace(/[^A-Z]/g, '');
     let color = '#'+(Math.floor(Math.random()*16777215).toString(16));
     let user = {'firstName':firstName,'lastName':lastName,'email':email,'password':password,'color':color,'phone':'','initial':initials};
-    addUser(user);
-    wipeInput();
+    addUser(user,x);
 }
 
 function renderContact(i){
@@ -68,23 +67,24 @@ function wipeActivContact(){
     }
 }
 
-function wipeInput(){
-    document.getElementById('contactName').value='';
-    document.getElementById('contactEmail').value='';
-    document.getElementById('contactTel').value='';
-    document.getElementById('editName').value='';
-    document.getElementById('editEmail').value='';
-    document.getElementById('editTel').value='';
-    document.getElementById('signUpName').value='';
-    document.getElementById('signUpEmail').value='';
-    document.getElementById('signUpPW').value='';
+function wipeInput(x){
+    if(x == 'addNew'){
+        document.getElementById('contactName').value='';
+        document.getElementById('contactEmail').value='';
+        document.getElementById('contactTel').value=''; 
+    }else if(x == 'signup'){
+        document.getElementById('signUpName').value='';
+        document.getElementById('signUpEmail').value='';
+        document.getElementById('signUpPW').value='';
+        window.location.href='index.html';
+    }
 }
 
 
-async function addUser(user) {
+async function addUser(user,x) {
     users.push(user);
     await backend.setItem('users', JSON.stringify(users));
-    renderLetters();
+     wipeInput(x);
 }
 
 function renderLetters() {
@@ -140,6 +140,5 @@ async function saveEdit(i){
     await backend.setItem('users', JSON.stringify(users));
     document.getElementById('editContact').classList.toggle('dNone');
     renderContact(i);
-    wipeInput();
 }
 

@@ -17,7 +17,7 @@
     <script src="js/login.js"></script>
 
     
-<body onload="stopAmimation();remember()">
+<body onload="init();stopAmimation();remember()">
     <div id="animation" class="animation">
         <div class="Screen">
         </div>
@@ -30,7 +30,7 @@
         <img src="assets/icon/logoMediumBlue.png" style="position: absolute; top: 80px; left: 77px; width: 100px;">
         <div style="display: flex; align-items: center; gap: 20px; position: absolute; top: 67px; right: 86px;">
             <span style="font-size: 20px;">Not a Join user?</span>
-            <button class="btn" style="height: 40px; width: 100px;" onclick="window.location.href='signin.html';">Sign up</button>
+            <button class="btn" style="height: 40px; width: 100px;" onclick="window.location.href='signin.html';wipeInput();">Sign up</button>
         </div>
         <form class="loginBox" onsubmit="logIn();return false;">
             <h2 style="border-bottom: 3px solid #4589ff;padding-bottom: 20px;">Log in</h2>

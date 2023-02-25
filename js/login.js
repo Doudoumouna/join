@@ -15,6 +15,7 @@ function logIn(){
                 localStorage.setItem('PW','');
                 localStorage.setItem('remember',false);
             }
+            localStorage.setItem('currentUser',i)
             window.location.href='summary.html';
         }
     }
@@ -28,4 +29,12 @@ function remember(){
     }else{
         document.getElementById('rememberMe').checked = false;
     }
+}
+
+function renderHeadInitials(){
+    let currentUser = localStorage.getItem('currentUser')
+    let user = users[currentUser];
+    document.getElementById('initialHeader').classList.remove('dNone');
+    document.getElementById('initialHeader').innerHTML = `${user['initial']}`;
+    document.getElementById('initialHeader').style.backgroundColor = user['color']; 
 }

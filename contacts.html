@@ -14,9 +14,10 @@
     <script src="script.js"></script>
     <script src="js/contact.js"></script>
     <script src="js/template.js"></script>
+    <script src="js/login.js"></script>
     
 </head>
-<body onload="init();initContacts()">
+<body onload="init('contact'); renderHeadInitials();">
    <div onclick="toggleAddContact()" class="addNewContact dNone" id="addNewContact">
         <div class="newContactBox" onclick="event.stopPropagation()" >
             <div class="newContactHead">
@@ -40,10 +41,11 @@
         
     </div>
     <header>
-        <img class="head-logo" src="assets/icon/logoSmallWhite.png">
+        <img class="head-logo" onclick="window.location.href='summary.html';" src="assets/icon/logoSmallWhite.png">
         <div class="head-right">
             <p>Kanban Project Management Tool</p>
             <img src="assets/icon/help.png">
+            <div id="initialHeader" class="initialHeader dNone"></div>
         </div>
     </header>
     <nav>
