@@ -4,7 +4,7 @@ const params = new Proxy(new URLSearchParams(window.location.search), {
     get: (searchParams, prop) => searchParams.get(prop),
   });
   // Get the value of "some_key" in eg "https://example.com/?some_key=some_value"
-  let resetUserMail = params.some_key; // "some_value"
+  let resetUserMail = params.resetPassword; // "some_value"
 
 function logIn(){
     let loginEmail = document.getElementById('loginEmail').value;
@@ -60,11 +60,12 @@ async function resetUserPassword(){
     let pw2 = document.getElementById('reset2Password').value;
     if(pw1 ==pw2){
         for (let i = 0; i < users.length; i++) {
-            const user = users[i];
+            let user = users[i];
             if(resetUserMail == user['email']){
-                user = {'firstName':firstName,'lastName':lastName,'email':email,'password':user['password'],'color':user['color'],'phone':tel,'initial':initials};
+                user = {'firstName':user['firstName'],'lastName':user['lastName'],'email':user['email'],'password':pw1,'color':user['color'],'phone':user['phone'],'initial':user['initial']};
                 users[i]=user;
                 await backend.setItem('users', JSON.stringify(users));
+                window.location.href='index.html';
             }
         }
     }
