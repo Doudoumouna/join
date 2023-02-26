@@ -46,7 +46,7 @@ function editBoxTemplate(i,tel,firstName,lastName,email,initial,color){
             <input id="editName" value="${firstName + ' ' + lastName}" type="text" placeholder="Name" required  style="background-image:  url(assets/icon/name.png); background-repeat: no-repeat; background-position: center right 14px;">
             <input id="editEmail" value="${email}" type="email" placeholder="E-Mail" required style="background-image:  url(assets/icon/email.png); background-repeat: no-repeat; background-position: center right 14px;">
             <input id="editTel" value="${tel}" type="tel" placeholder="Phone" required style="background-image:  url(assets/icon/phone.png); background-repeat: no-repeat; background-position: center right 14px;">
-            <button class="btn">Save</button>
+            <button class="btn" type="submit">Save</button>
         </form>
     </div>
     
